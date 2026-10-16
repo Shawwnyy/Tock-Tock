@@ -89,6 +89,8 @@ Légende : ✅ **testé automatiquement** · 🟡 **écrit et vérifié statique
 | Comptes créés par téléphone sans e-mail (profil créé, aucune donnée exposée) | ✅ 4 assertions SQL ; ⚪ chronique par e-mail indisponible pour ces comptes (grisée dans les Réglages) |
 | **Discussion sans compte** (nom#, clé secrète d'appareil, relais Node `chat/`) : messages, demande et partage de bilan avec accord à chaque fois, blocage, reconnexion après redémarrage du relais | ✅ testé de bout en bout : vrai relais + 2 navigateurs Chromium (10 tests unitaires du relais + parcours complet) ; ⚪ jamais essayé sur Internet, à plus de 2 personnes, ni sur téléphone |
 | **Page d'accueil**, 9 exercices guidés, suivi des exercices | ✅ testés (unitaires + navigateur) ; contenu des exercices non relu par un professionnel de santé |
+| **Publication en ligne** de la version autonome (`a-publier/index.html`, servie en HTTP sous un sous-dossier `/Tock-Tock/`) | ✅ les 3 parcours navigateur passent par HTTP ; ⚪ jamais essayé sur un vrai hébergeur (GitHub Pages, Netlify…) ni sur téléphone |
+| Déploiement GitHub Actions (`deploy.yml`, version autonome sans variables) | ⚪ commandes exécutées en local seulement, workflow jamais lancé sur GitHub ; la compilation Vite (version serveur) n'est pas faisable dans cet environnement |
 | Rappels / alertes par **SMS** (hors connexion) | ⚪ étudié seulement, non implémenté (docs/LIMITS.md) |
 
 ## Version locale « Tock Tock.html » (un seul fichier)

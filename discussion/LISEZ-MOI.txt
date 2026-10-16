@@ -28,3 +28,9 @@ UTILISER
   - Il n'y a ni compte, ni annuaire, ni modération humaine. Réservé aux 15 ans et plus (déclaratif).
   - Testé : ce serveur avec deux navigateurs sur la même machine. PAS testé : Internet, téléphones, plus de 2 personnes.
   - Pour l'ouvrir sur Internet, il faut un hébergeur avec HTTPS : voir source/docs/LIMITS.md avant de le faire.
+
+METTRE LA DISCUSSION EN LIGNE (non essayé)
+  Il faut un hébergeur qui exécute Node.js 18+ (Render, Railway, Fly.io, un petit serveur à toi...).
+  Dossier à envoyer : ce dossier « discussion ». Commande de démarrage : npm start (ou node serveur.mjs).
+  L'hébergeur fournit le port (variable PORT, déjà lue) et le HTTPS. Ne l'ouvre pas en HTTP simple sur Internet.
+  Jamais testé sur un vrai hébergeur : essaie d'abord avec 2 personnes de confiance.

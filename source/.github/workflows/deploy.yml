@@ -1,5 +1,7 @@
-# Déploiement sur GitHub Pages. Prérequis : Settings > Pages > Source = « GitHub Actions », et deux « Variables » de dépôt
-# (Settings > Secrets and variables > Actions > Variables) : VITE_SUPABASE_URL et VITE_SUPABASE_ANON_KEY.
+# Déploiement sur GitHub Pages. Prérequis : Settings > Pages > Source = « GitHub Actions ».
+# Facultatif : deux « Variables » de dépôt (Settings > Secrets and variables > Actions > Variables) VITE_SUPABASE_URL et
+# VITE_SUPABASE_ANON_KEY pour la version reliée à un serveur ; SANS elles, c'est la version autonome qui est publiée.
+# (Non essayé sur GitHub même : seules les commandes ont été exécutées en local.)
 # La clé « anon » est publique par conception (protégée par la RLS). N'ajoutez JAMAIS ici la clé service_role.
 name: Deploy
 on:
@@ -16,7 +18,15 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 20 }
       - run: npm install --no-audit --no-fund
-      - run: npm run build
+      - name: Construire le site
+        # Variables Supabase renseignées -> version reliée au serveur. Sinon -> version autonome (fonctionne sans rien configurer).
+        run: |
+          if [ -n "$VITE_SUPABASE_URL" ] && [ -n "$VITE_SUPABASE_ANON_KEY" ]; then
+            npm run build
+          else
+            mkdir -p dist && node scripts/build-standalone.mjs dist/index.html
+          fi
+          touch dist/.nojekyll
         env:
           VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ vars.VITE_SUPABASE_ANON_KEY }}

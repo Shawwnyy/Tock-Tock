@@ -30,6 +30,19 @@ RÈGLES ET PRINCIPE
   assistant avec IA (serveur). Les règles sont versionnées : si elles changent, il faut les accepter à nouveau
   (tu peux toujours exporter tes données sans accepter).
 
+METTRE EN LIGNE (hébergement)
+  1. Prends le dossier  a-publier/  : il contient  index.html  (l'application complète) et  .nojekyll.
+  2. Envoie ces DEUX fichiers à la RACINE de ton hébergeur :
+       - GitHub Pages : dépôt > Add file > Upload files, puis Settings > Pages > « Deploy from a branch » > main / (root).
+         (Si ton dépôt contient déjà l'ancien code, supprime-le ou publie depuis un dépôt neuf.)
+       - Netlify : glisse le dossier a-publier sur app.netlify.com/drop.
+  3. Ouvre l'adresse : tu dois voir l'accueil de Tock Tock. Les données restent dans le navigateur de chaque personne.
+  - NE PUBLIE PAS le dossier source/ tel quel : c'est du code à compiler (il affiche un message d'explication, plus une page blanche).
+  - La DISCUSSION ne marche pas sur un hébergement statique : il faut un hébergeur qui exécute Node.js (dossier discussion/).
+  - Vérifié : l'application servie en HTTP sous /Tock-Tock/ (3 parcours navigateur). NON vérifié : un vrai hébergeur.
+  - Je n'ai pas pu reproduire ta page « Tock-Tock » vide : ce titre n'existe nulle part dans mon code, donc je ne sais pas
+    ce que ton hébergeur a publié. Si elle revient, envoie-moi l'adresse du site ou la liste des fichiers publiés.
+
 NOUVEAU : ACCUEIL, EXERCICES, DISCUSSION
   - Page d'ACCUEIL : salutation, ton bilan du jour (fait ou à faire), série, moyenne 7 jours, courbe 14 jours,
     exercices de la semaine, objectifs en cours, idée du jour, ton nom# à copier, raccourcis.
@@ -61,6 +74,7 @@ TOUT CE QUE CONTIENT LA VERSION
 
 DANS LE ZIP
   Tock Tock.html   l'application hors ligne (à ouvrir)
+  a-publier/       index.html + .nojekyll : à envoyer tels quels sur un hébergeur (voir METTRE EN LIGNE)
   discussion/      le serveur de discussion + la version « discussion » de l'application (LISEZ-MOI dedans)
   source/          le code complet (version locale dans src/local, version avec serveur Supabase)
   LISEZ-MOI.txt    ce fichier

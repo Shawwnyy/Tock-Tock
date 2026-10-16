@@ -8,6 +8,12 @@ Elle contient : bilan quotidien complet ou rapide avec brouillon automatique (20
 
 **Connexion ou inscription par code (e-mail ou SMS)** : l'écran existe dans le fichier, mais un code ne peut être envoyé que par un **serveur**. Par défaut le fichier est strictement hors ligne : il contrôle le format de l'adresse ou du numéro, le dit clairement, et propose « Continuer sans compte ». Pour activer l'envoi réel, voir `docs/SETUP.md` (section « Connexion par e-mail et par SMS »). Aucun code n'est jamais généré, affiché ni simulé par l'application.
 
+**Héberger (mettre en ligne)** : le dossier `a-publier/` du zip contient `index.html` (l'application complète, prête à l'emploi) et `.nojekyll`. Envoie ces deux fichiers **à la racine** de ton hébergeur statique (GitHub Pages en mode « Deploy from a branch », Netlify « Drop », Cloudflare Pages…). Rien à compiler, rien à configurer ; les données restent dans le navigateur de chaque personne.
+
+- **À ne pas publier tel quel** : `source/index.html` est le code source, il doit être compilé (il affiche maintenant un message au lieu d'une page blanche).
+- **GitHub Pages avec Actions** : `.github/workflows/deploy.yml` publie la version autonome quand les variables `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY` ne sont pas renseignées, et la version serveur sinon. Étape non essayée sur GitHub même (seulement les commandes, en local).
+- **Discussion en ligne** : un site statique ne peut pas faire passer de messages. Il faut un hébergeur qui exécute Node.js (dossier `discussion/`, commande `npm start`, `PORT` et HTTPS fournis par l'hébergeur). Non essayé sur un vrai hébergeur.
+
 **Page d'accueil, exercices et discussion** : l'accueil résume la journée (bilan, série, moyenne 7 jours, courbe 14 jours, objectifs, idée du jour). 9 exercices guidés dans l'onglet Bien-être. La **discussion** (sans compte, avec ton nom#, ex. `Léo#18428`) exige le petit serveur `chat/serveur.mjs` (Node 18+, sans dépendance) ; `TOCK_CHAT=1 npm run build:local` fabrique la version à servir. Les messages ne sont pas chiffrés de bout en bout (voir `docs/LIMITS.md`).
 
 Pour la reconstruire après modification : `npm install` puis `npm run build:local`. Le code est dans `src/local/` et réutilise la logique testée de `supabase/functions/_shared/`.

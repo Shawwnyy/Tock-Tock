@@ -116,3 +116,12 @@ La migration `0010_support_tickets.sql` ajoute la permission `tickets.handle` au
 TOCK_AUTH_URL=https://VOTRE-PROJET.supabase.co TOCK_AUTH_KEY=VOTRE_CLE_PUBLIQUE_ANON npm run build:local
 ```
 Le script refuse une clé secrète. Le fichier obtenu ne contacte que ce serveur, uniquement pour envoyer et vérifier un code ; ses bilans restent sur l'appareil. Dans ce fichier, un compte ne sert qu'à confirmer l'identifiant (aucune synchronisation).
+
+## Héberger
+
+le dossier `a-publier/` du zip contient `index.html` (l'application complète, prête à l'emploi) et `.nojekyll`. Envoie ces deux fichiers **à la racine** de ton hébergeur statique (GitHub Pages en mode « Deploy from a branch », Netlify « Drop », Cloudflare Pages…). Rien à compiler, rien à configurer ; les données restent dans le navigateur de chaque personne.
+
+- **À ne pas publier tel quel** : `source/index.html` est le code source, il doit être compilé (il affiche maintenant un message au lieu d'une page blanche).
+- **GitHub Pages avec Actions** : `.github/workflows/deploy.yml` publie la version autonome quand les variables `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY` ne sont pas renseignées, et la version serveur sinon. Étape non essayée sur GitHub même (seulement les commandes, en local).
+- **Discussion en ligne** : un site statique ne peut pas faire passer de messages. Il faut un hébergeur qui exécute Node.js (dossier `discussion/`, commande `npm start`, `PORT` et HTTPS fournis par l'hébergeur). Non essayé sur un vrai hébergeur.
+

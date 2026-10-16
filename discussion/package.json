@@ -1,0 +1,12 @@
+{
+  "name": "tock-tock-discussion",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node serveur.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
