@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "types": [] },
+  "include": ["src", "typecheck/stubs.d.ts", "typecheck/react-stubs.d.ts", "supabase/functions/_shared/types.ts", "supabase/functions/_shared/stats.ts",
+              "supabase/functions/_shared/chronicle.ts", "supabase/functions/_shared/crisis.ts", "supabase/functions/_shared/schedule.ts", "supabase/functions/_shared/pdf.ts"]
+}

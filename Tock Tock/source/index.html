@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- CSP : scripts et styles du site uniquement ; connexions limitées à Supabase. Adapter connect-src si vous changez de domaine. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*.supabase.co; media-src 'self' blob: https://*.supabase.co; connect-src 'self' https://*.supabase.co wss://*.supabase.co; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="theme-color" content="#2c5282" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <title>Tock Tock</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>Tock Tock a besoin de JavaScript.</noscript>
+    <script src="./file-guard.js"></script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

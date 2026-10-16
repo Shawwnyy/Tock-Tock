@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "jsx": "react-jsx",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": [
+      "vite/client"
+    ]
+  },
+  "include": [
+    "src",
+    "supabase/functions/_shared/types.ts",
+    "supabase/functions/_shared/stats.ts",
+    "supabase/functions/_shared/chronicle.ts",
+    "supabase/functions/_shared/crisis.ts",
+    "supabase/functions/_shared/schedule.ts",
+    "supabase/functions/_shared/pdf.ts"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "target": "ES2022", "module": "ESNext", "moduleResolution": "Bundler", "lib": ["ES2022", "DOM"],
+    "strict": true, "noEmit": true, "skipLibCheck": true, "allowImportingTsExtensions": true, "types": [],
+    "noUnusedLocals": false, "forceConsistentCasingInFileNames": true
+  },
+  "include": ["supabase/functions/**/*.ts", "typecheck/stubs.d.ts"]
+}

@@ -1,0 +1,30 @@
+DISCUSSION TOCK TOCK (sans compte, avec ton nom#)
+=================================================
+
+Ce dossier contient le petit serveur qui fait passer les messages entre les personnes.
+Rien à installer à part Node.js (version 18 ou plus) : https://nodejs.org
+
+LANCER
+  Windows : double-clique sur  lancer-discussion.bat
+  Mac / Linux : dans un terminal :  sh lancer-discussion.sh
+  (ou :  node serveur.mjs)
+
+Le terminal affiche deux adresses :
+  - http://localhost:8787/            -> sur cet ordinateur
+  - http://192.168.x.x:8787/          -> pour les autres appareils connectés au MÊME Wi-Fi
+Ouvre cette adresse dans le navigateur (pas le fichier directement), onglet « Discussion », active-la.
+
+UTILISER
+  1. Ton nom# s'affiche (exemple : Léo#18428). Copie-le et donne-le à la personne.
+  2. Elle saisit ton nom# dans « Nouvelle discussion » et t'écrit. Toi, tu fais pareil avec le sien.
+  3. « Voir son bilan du jour » : la personne reçoit une demande et choisit : autoriser cette fois,
+     toujours autoriser (moyennes seulement) ou refuser. Douleur et note ne partent que si elle les coche.
+  4. « Bloquer » : tu ne reçois plus rien de cette personne, qui n'en est pas informée.
+
+À SAVOIR (honnêtement)
+  - Les messages ne sont PAS chiffrés de bout en bout et le réseau est en HTTP simple : à utiliser entre
+    personnes de confiance, sur un réseau de confiance.
+  - Le serveur ne garde les messages qu'en mémoire (24 h au plus, effacés dès réception) et les perd à l'arrêt.
+  - Il n'y a ni compte, ni annuaire, ni modération humaine. Réservé aux 15 ans et plus (déclaratif).
+  - Testé : ce serveur avec deux navigateurs sur la même machine. PAS testé : Internet, téléphones, plus de 2 personnes.
+  - Pour l'ouvrir sur Internet, il faut un hébergeur avec HTTPS : voir source/docs/LIMITS.md avant de le faire.

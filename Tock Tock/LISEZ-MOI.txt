@@ -1,0 +1,82 @@
+TOCK TOCK
+=========
+
+POUR COMMENCER (10 secondes, rien à installer)
+  Double-clique sur « Tock Tock.html » : il s'ouvre dans ton navigateur (Chrome, Edge, Firefox, Safari).
+  C'est un seul fichier, il fonctionne sans Internet et ne se connecte à rien.
+  Au premier lancement tu vois l'écran « Connexion ou inscription » : clique sur « Continuer sans compte ».
+  Tes données restent dans ton navigateur : fais des sauvegardes (Réglages > Télécharger une sauvegarde PDF).
+
+CONNEXION / INSCRIPTION PAR CODE (e-mail ou téléphone) - CE QUI MARCHE, CE QUI NE MARCHE PAS ENCORE
+  L'écran est là : choix E-mail / Téléphone, vérification du format (adresse complète, mobile français 06/07
+  ou numéro international +indicatif, ligne fixe refusée), puis saisie du code à 6 chiffres reçu.
+  MAIS un code ne peut être envoyé que par un SERVEUR (e-mail ou SMS). Le fichier « Tock Tock.html » fourni est
+  hors ligne : il contrôle le format et te dit clairement « envoi indisponible ». Il ne fabrique, n'affiche et ne
+  simule JAMAIS de code (un faux code ne prouverait rien et donnerait une fausse impression de sécurité).
+  Pour recevoir de vrais codes il faut :
+    1. un projet Supabase (gratuit pour démarrer) avec l'envoi d'e-mails configuré (voir source/docs/SETUP.md) ;
+       pour les SMS, en plus un fournisseur de SMS (payant) : voir source/docs/SETUP.md et source/docs/LIMITS.md.
+    2. reconstruire le fichier relié à ton serveur (Node.js requis) :
+         cd source
+         npm install
+         TOCK_AUTH_URL=https://TON-PROJET.supabase.co TOCK_AUTH_KEY=TA_CLE_PUBLIQUE_ANON npm run build:local
+       (la clé « anon » est publique par conception ; le script REFUSE une clé secrète service_role).
+  La version complète avec comptes (dossier source/) utilise le même écran pour se connecter.
+
+RÈGLES ET PRINCIPE
+  5 principes (tes données sont à toi / rien n'est inventé / tu gardes la main / l'humain d'abord / honnête sur ses
+  limites) et 77 règles réparties en 13 sections (dont « Discussion et partage de bilan »), chacune dépliable avec son « pourquoi » et le principe qu'elle protège.
+  Nouvelles sections : objectifs et petites victoires, respiration/assistant, compte et code de connexion, tes droits,
+  assistant avec IA (serveur). Les règles sont versionnées : si elles changent, il faut les accepter à nouveau
+  (tu peux toujours exporter tes données sans accepter).
+
+NOUVEAU : ACCUEIL, EXERCICES, DISCUSSION
+  - Page d'ACCUEIL : salutation, ton bilan du jour (fait ou à faire), série, moyenne 7 jours, courbe 14 jours,
+    exercices de la semaine, objectifs en cours, idée du jour, ton nom# à copier, raccourcis.
+  - 9 EXERCICES guidés (onglet Bien-être) : scan corporel, relaxation musculaire, étirements express, marche attentive,
+    lieu sûr, nommer son émotion, trois bonnes choses, heure des soucis, lettre à soi. Détente, pas un traitement.
+  - DISCUSSION sans compte (dossier discussion/) : ton nom# (ex. Léo#18428) sert d'adresse. Tu donnes ton nom# à
+    quelqu'un ; il t'écrit ; il peut demander à voir ton bilan du jour, et TOI tu autorises (ou non) à chaque fois.
+    Elle exige le petit serveur du dossier discussion/ : voir discussion/LISEZ-MOI.txt. Le fichier « Tock Tock.html »
+    à la racine reste hors ligne et ne peut pas discuter (il l'explique).
+
+IDÉES POUR LA SUITE (à choisir)
+  1. Journal libre et roue des émotions    2. Défis de la semaine (petits objectifs automatiques)
+  3. Rappels / notifications du bilan      4. Thèmes de couleurs et grande police (accessibilité)
+  5. Graphiques comparant sommeil / moral / activité   6. Discussion de groupe privée sur invitation
+  7. Signalement + modération humaine du chat           8. Chiffrement de bout en bout et HTTPS pour la discussion
+  9. Application installable (PWA) fonctionnant hors ligne   10. Partage d'un bilan hebdomadaire avec un proche (PDF)
+
+EN-TÊTE
+  En haut à droite : ton prénom, un NUMÉRO ALÉATOIRE à 5 chiffres propre à cet appareil (#48213, un pseudonyme qui
+  ne révèle ni ton nom ni ton e-mail ; il reste le même d'une visite à l'autre, tu peux en générer un autre dans
+  la page Compte), l'HEURE à la seconde près (dans ton fuseau horaire), puis « Se connecter » et « S'inscrire »
+  (ou ton compte masqué et « Se déconnecter » une fois connecté). Ce numéro n'est pas unique au monde : c'est un repère local.
+
+TOUT CE QUE CONTIENT LA VERSION
+  - Sauvegarde en PDF (lisible + restaurable), rapport de période en PDF (douleur et notes seulement si tu les coches).
+  - Centre d'aide : écoute par pays, FAQ avec recherche, tickets exportables (PDF / copie / e-mail).
+    Un ticket n'est PAS envoyé automatiquement dans ce fichier.
+  - Brouillon automatique, bilan rapide, recherche sans accents, rappel de sauvegarde, alerte si le stockage échoue.
+
+DANS LE ZIP
+  Tock Tock.html   l'application hors ligne (à ouvrir)
+  discussion/      le serveur de discussion + la version « discussion » de l'application (LISEZ-MOI dedans)
+  source/          le code complet (version locale dans src/local, version avec serveur Supabase)
+  LISEZ-MOI.txt    ce fichier
+
+CE QUI A ÉTÉ VÉRIFIÉ (et ce qui ne l'a pas été)
+  Vérifié : 186 tests TypeScript ; discussion testée de bout en bout avec le VRAI relais et 2 navigateurs (messages, demande de bilan acceptée et refusée, blocage, redémarrage du relais, texte HTML non interprété, usurpation refusée) ; compilation sans erreur ; 674 assertions SQL sur un vrai PostgreSQL 16 ;
+  114 requêtes du code recoupées avec le schéma ; parcours automatisés dans Chromium (bilan, sauvegarde -> restauration,
+  tickets, règles, rapport, mobile) ; connexion par code (e-mail et SMS) testée contre un FAUX serveur
+  d'authentification : bon et mauvais code, verrou après 5 essais, limitation, échec du fournisseur SMS.
+  NON vérifié : la discussion sur Internet, sur téléphone ou à plus de 2 personnes ; un VRAI envoi d'e-mail ou de SMS (aucun serveur, aucun fournisseur ici) ; Firefox/Safari/Edge ;
+  la version serveur (Supabase, e-mails, IA, Edge Functions) n'a jamais tourné pour de vrai ; les noms de clés
+  [auth.sms] de supabase/config.toml sont à vérifier avec ton CLI ; textes juridiques à faire relire par un juriste.
+
+LIMITES À CONNAÎTRE
+  - Vider les données du navigateur efface tout : sauvegarde PDF régulière.
+  - Le code PIN masque l'écran, il ne chiffre pas les données. Le PDF de sauvegarde n'est pas chiffré.
+  - Dans le fichier, un compte confirmé ne sert qu'à prouver l'identifiant : il n'y a aucune synchronisation.
+  - SMS : coût, fraude au trafic SMS, recyclage des numéros (voir source/docs/LIMITS.md) : l'e-mail est plus sûr.
+  - Application de suivi personnel : ni diagnostic, ni dispositif médical, ni service d'urgence.
